@@ -33,6 +33,27 @@
         </nav>
     </header>
     <main>
+        <?php 
+            if (isset($_SESSION['login'])){ 
+                echo 
+                '<section class="container-fluid">
+                    <form class="formulaire" method="post" action="commentaire.php"> 
+                        <section id="ins-text">
+                            <h2><span class="title"><u>Ecrivez nous votre commentaire, il sera ensuite affiché dans le livre d\'or.</u></span></h2>
+                        </section>
+                        <section class="form-group">
+                            <label for="login">Login</label>
+                            <textarea class="form-control" name="comment" rows="5">Écrivez votre commentaire ici.</textarea> 
+                        </section>
+                        <button type="submit" name="update" class="btn btn-dark">Envoyer</button><br>
+                    </form>
+                </section>';
+            }       
+               
+            else{
+                echo '<section class="alert alert-danger text-center" role="alert">Vous devez être connecté pour poster un commentaire dans le livre d\'or : <a href="connexion.php" class="alert-link">Se connecter</a>.</section>';
+            }
+        ?>
     </main>
     <footer>
         <section class="text-center py-4">

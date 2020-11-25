@@ -10,7 +10,6 @@
     }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -69,23 +68,23 @@
             if (isset($_SESSION['login'])){ 
                 echo 
                 '<section class="container-fluid">
-                    <form class="formulaire" method="post" action="inscription.php"> 
+                    <form class="formulaire" method="post" action="profil.php"> 
                         <section id="ins-text">
                             <h2><span class="title"><u>Modifier votre Profil</u></span></h2>
                         </section>
                         <section class="form-group">
-                            <label for="login">Login</label>
+                            <label for="Nlogin">Login</label>
                             <input type="text" class="form-control" name="Nlogin" placeholder="Votre nouveau Login"  required> 
                         </section>
                         <section class="form-group">
-                            <label for="password">Mot de Passe</label>
+                            <label for="Npassword">Mot de Passe</label>
                             <input type="password" class="form-control" name="Npassword" placeholder="Votre nouveau Mot de Passe" required>
                         </section>
                         <section class="form-group">
-                            <label for="confirm-password">Confirmez votre Mot de Passe</label>
+                            <label for="NCpassword">Confirmez votre Mot de Passe</label>
                             <input type="password" class="form-control" name="NCpassword" placeholder="Confirmez votre nouveau Mot de Passe" required>
                         </section>
-                        <button type="submit" name="update" class="btn btn-dark">Rejoignez nous !</button><br>
+                        <button type="submit" name="update" class="btn btn-dark">Enregistrer</button><br>
                     </form>
                 </section>';
             }       
