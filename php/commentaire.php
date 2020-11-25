@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+
+    if (isset($_POST['logout'])){
+
+        session_destroy();
+        header('location: connexion.php');
+        exit();
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,9 +24,9 @@
         <h1><span class="title">Brasserie <u>La Plateforme</u></span></h1>
         <nav>
             <ul class="nav justify-content-center nav-head">
-                <li class="nav-item"><a class="nav-link" href="../index.php"><i class="fas fa-utensils"></i> | Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="inscription.php"><i class="fas fa-signature"></i> | Inscription</a></li>
                 <li class="nav-item"><a class="nav-link" href="connexion.php"><i class="fas fa-concierge-bell"></i> | Connexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.php"><i class="fas fa-utensils"></i> | Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="profil.php"><i class="fas fa-user-circle"></i> | Mon Profil</a></li>
                 <li class="nav-item"><a class="nav-link" href="livre-or.php"><i class="fas fa-book-open"></i> | Livre d'Or</a></li>
             </ul>

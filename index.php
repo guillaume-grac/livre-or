@@ -1,3 +1,13 @@
+<?php
+    session_start();
+
+     if (isset($_POST['logout'])){
+
+        session_destroy();
+        header('location: php/connexion.php');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,11 +22,12 @@
         <h1><span class="title">Brasserie <u>La Plateforme</u></span></h1>
         <nav>
             <ul class="nav justify-content-center nav-head">
-                <li class="nav-item"><a class="nav-link" href="php/inscription.php"><i class="fas fa-signature"></i> | Inscription</a></li>
-                <li class="nav-item"><a class="nav-link" href="php/connexion.php"><i class="fas fa-concierge-bell"></i> | Connexion</a></li>
-                <li class="nav-item"><a class="nav-link" href="php/profil.php"><i class="fas fa-user-circle"></i> | Mon Profil</a></li>
-                <li class="nav-item"><a class="nav-link" href="php/commentaire.php"><i class="fas fa-feather-alt"></i> | Commentaire</a></li>
-                <li class="nav-item"><a class="nav-link" href="php/livre-or.php"><i class="fas fa-book-open"></i> | Livre d'Or</a></li>
+                <li class="nav-item li-bg"><a class="nav-link" href="php/inscription.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-signature"></i> | Inscription';}?></a></li>
+                <li class="nav-item li-bg"><a class="nav-link" href="php/connexion.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-concierge-bell"></i> | Connexion';}?></a></li>
+                <li class="nav-item li-bg"><a class="nav-link" href="php/profil.php"><i class="fas fa-user-circle"></i> | Mon Profil</a></li>
+                <li class="nav-item li-bg"><a class="nav-link" href="php/commentaire.php"><i class="fas fa-feather-alt"></i> | Commentaire</a></li>
+                <li class="nav-item li-bg"><a class="nav-link" href="php/livre-or.php"><i class="fas fa-book-open"></i> | Livre d'Or</a></li>
+                <li class="nav-item"><a class="nav-link"><?php if (isset($_SESSION['login'])){ echo '| Bonjour <i class="fas fa-glass-cheers"></i> ' . $_SESSION['login'] . '<li><form method="POST" action="index.php"><button type="submit" name="logout" title="Déconnexion"  class="btn btn-danger"><i class="fas fa-power-off"></i></button></form></li>';} ?></a></li>
             </ul>
         </nav>
     </header>
