@@ -21,6 +21,21 @@
         </nav>
     </header>
     <main>
+    <?php
+        /* Variable qui permet de selectionner le login de utilisateur, la date de commentaires, et de joindre les tables commentaires et utilisateurs en triant du plus récent au plus vieux */
+    $check_comments = mysqli_query($db,"SELECT u.login, c.date, c.commentaire FROM utilisateurs AS u INNER JOIN commentaires AS c WHERE c.id_utilisateur = u.id ORDER BY c.date DESC");
+
+        /* Boucle while qui permet de fetch la variable ci dessus en affichant le resultat de celle-ci sous forme de tableau */
+    while($comments_list = mysqli_fetch_assoc($check_comments)){
+        echo '<table><tr><td><b>Posté le ' . htmlspecialchars($comments_list['date']) . ' par ' . htmlspecialchars($comments_list['login']) . '</b></td></tr><br /><tr><td>'
+        html_entity_decode($comments_list['commentaire']) . '</td></tr></table>';
+    }
+
+        /* Condition if qui permet si la session est active d'afficher une alerte permettant de rediriger l'utilisateur vers la page commentaire */
+    if (isset($_SESSION['id'])){
+        echo "<br /><br /><section class='alert alert-primary' role='alert'> Vous pouvez ajouter un ou plusieurs commentaires en <a href='commentaire.php' class='alert-link'>cliquant          ici</a>. Cliquer sur le lien si vous le souhaitez !</section>";
+    }
+?>
     </main>
     <footer>
         <section class="text-center py-4">

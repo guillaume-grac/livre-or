@@ -74,15 +74,15 @@
                         </section>
                         <section class="form-group">
                             <label for="Nlogin">Login</label>
-                            <input type="text" class="form-control" name="Nlogin" placeholder="Votre nouveau Login"  required> 
+                            <input type="text" class="form-control" name="Nlogin" placeholder="Votre nouveau Login" value="'.$_SESSION['login'].'"  required> 
                         </section>
                         <section class="form-group">
                             <label for="Npassword">Mot de Passe</label>
-                            <input type="password" class="form-control" name="Npassword" placeholder="Votre nouveau Mot de Passe" required>
+                            <input type="password" class="form-control" name="Npassword" placeholder="Votre nouveau Mot de Passe" value="'.$_SESSION['password'].'" required>
                         </section>
                         <section class="form-group">
                             <label for="NCpassword">Confirmez votre Mot de Passe</label>
-                            <input type="password" class="form-control" name="NCpassword" placeholder="Confirmez votre nouveau Mot de Passe" required>
+                            <input type="password" class="form-control" name="NCpassword" placeholder="Confirmez votre nouveau Mot de Passe" value="'.$_SESSION['password'].'" required>
                         </section>
                         <button type="submit" name="update" class="btn btn-dark">Enregistrer</button><br>
                     </form>
