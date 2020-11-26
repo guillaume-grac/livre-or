@@ -32,8 +32,8 @@
         <h1><span class="title">Brasserie <u>La Plateforme</u></span></h1>
         <nav>
             <ul class="nav justify-content-center nav-head">
-            <li class="nav-item li-bg"><a class="nav-link" href="inscription.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-signature"></i> | Inscription';}?></a></li>
-                <li class="nav-item li-bg"><a class="nav-link" href="connexion.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-concierge-bell"></i> | Connexion';}?></a></li>
+                <li class="nav-item"><a class="nav-link" href="inscription.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-signature"></i> | Inscription';}?></a></li>
+                <li class="nav-item"><a class="nav-link" href="connexion.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-concierge-bell"></i> | Connexion';}?></a></li>
                 <li class="nav-item"><a class="nav-link" href="../index.php"><i class="fas fa-utensils"></i> | Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="profil.php"><i class="fas fa-user-circle"></i> | Mon Profil</a></li>
                 <li class="nav-item"><a class="nav-link" href="livre-or.php"><i class="fas fa-book-open"></i> | Livre d'Or</a></li>
@@ -60,29 +60,27 @@
             }       
                
             else{
-                echo '<section class="alert alert-danger text-center" role="alert">Vous devez être connecté pour poster un commentaire dans le livre d\'or : <a href="connexion.php" class="alert-link">Se connecter</a>.</section>';
+                echo '<section class=" alert alert-danger text-center" role="alert">Vous devez être connecté pour poster un commentaire dans le livre d\'or : <a href="connexion.php" class="alert-link">Se connecter</a>.</section>';
             }
 
             date_default_timezone_set('UTC');
 
-            if (isset($_POST['new_comment'])){
+            if (isset($_POST['envoyer'])){
             $comments = htmlspecialchars($_POST['comment'], ENT_QUOTES);
             $id_user = $_SESSION['id'];
             $date_comment = date("Y-m-j H:i:s");
             $create_comment = mysqli_query($db,"INSERT INTO commentaires(commentaire, id_utilisateur, date) VALUES ('" . $comments . "', '" . $id_user . "', '" . $date_comment . "')");
             echo mysqli_error($db);
 
-        if ($create_comment){
-            echo "<section class='alert alert-success text-center' role='alert'>Le commentaire à bien été envoyé, vous pouvez le visualisé dans l'onglet <i>livre d'or</i><button type='button'' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></section>!";
-        }
-    }
-
-?>
-
+                if ($create_comment){
+                    echo "<section class=' alert-css alert alert-success text-center' role='alert'>Le commentaire à bien été <b>Envoyé</b><button type='button'' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></section>!";
+                }
+            }
+        ?>
     </main>
     <footer>
         <section class="text-center py-4">
-            <p><span class='title'>Brasserie La Platefomre</span></p>
+            <p><span class='title'>Brasserie La Plateforme</span></p>
         </section>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

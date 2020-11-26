@@ -13,14 +13,14 @@ html{
 body{
     background-image: url(../images/book-bg.jpg);
     background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: 100% -70%;
+    background-size: 40%;
 }
 
 
 /* Header */ 
 
 header{
+    position: sticky; top: 0; left: 0; right: 0;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     background-color: white;
@@ -43,27 +43,20 @@ li a:hover{
     color: rgb(151, 99, 39);
 }
 
-.li-bg a{
-    transition: all 0.3s ease 0.3s;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-}
-
-.li-bg a:hover{
-    color: rgb(151, 99, 39);
-}
-
-
 /* Main */
 
-.formulaire{
-    color: black;
-    font-family: 'Roboto', sans-serif;
+main{
     text-align: center;
-    margin-top: 8%;
-    margin-right: 35%;
-    margin-left: 35%;
+    text-overflow: auto;
+    overflow: auto;
+}
+
+table{
+    margin: auto;
+}
+
+.nom-com{
+    color: rgb(151, 99, 39);
 }
 
 /* Footer */ 
@@ -73,5 +66,5 @@ footer{
     border-top: black solid 1px;
     font-size: 18px;
     background-color: white;
-    position: absolute; bottom: 0; left: 0; right: 0;
+    position: fixed; bottom: 0; left: 0; right: 0;
 }
