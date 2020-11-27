@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 27 nov. 2020 à 13:14
+-- Généré le : ven. 27 nov. 2020 à 14:04
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -34,19 +34,27 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
   `id_utilisateur` int(11) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commentaires`
 --
 
 INSERT INTO `commentaires` (`id`, `commentaire`, `id_utilisateur`, `date`) VALUES
-(1, 'Meilleure choix de biÃ¨res de la rÃ©gion !', 1, '2020-11-27 12:11:14'),
-(2, 'Trop cool', 2, '2020-11-27 12:17:50'),
-(3, 'Uh oh !', 3, '2020-11-27 12:19:00'),
-(4, 'https://www.youtube.com/watch?v=SNUuB_rmIQI', 3, '2020-11-27 12:20:36'),
-(5, 'Je suis bleu', 3, '2020-11-27 12:23:31'),
-(6, 'Tg Bebert ...', 1, '2020-11-27 12:23:52');
+(1, 'Un commentaire', 1, '2020-11-27 13:53:16'),
+(2, 'Un autre commentaire', 1, '2020-11-27 13:53:22'),
+(3, 'Encore un commentaire', 1, '2020-11-27 13:53:28'),
+(4, 'Un dernier commentaire ', 1, '2020-11-27 13:53:34'),
+(5, 'Un commentaire de William test', 2, '2020-11-27 13:54:52'),
+(6, 'autre test ', 2, '2020-11-27 13:54:58'),
+(7, 'TEST', 1, '2020-11-27 13:56:04'),
+(8, 'TEST', 1, '2020-11-27 13:56:07'),
+(9, 'TEST Footer', 1, '2020-11-27 13:56:14'),
+(10, 'FOOTER', 1, '2020-11-27 13:56:24'),
+(11, 'Footer', 1, '2020-11-27 13:56:28'),
+(12, 'TEST FOOTER ', 1, '2020-11-27 13:56:41'),
+(13, 'DERNIER COMMENTAIRE', 1, '2020-11-27 13:56:47'),
+(14, 'Le dernier commentaire de test ', 2, '2020-11-27 14:03:44');
 
 -- --------------------------------------------------------
 
@@ -60,16 +68,15 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `login`, `password`) VALUES
-(1, 'Guillaume', '$2y$10$LAIk0unBo13GJwDdN4ZjjOpn.fBL5CdJ/VUsny7qBzW7AYXj6OR86'),
-(2, 'Jacquie', '$2y$10$lYB3XZaoUFdx/tRLJzSIbexHm8JkEWcFWcQ.hce8FTmM00KFra4jW'),
-(3, 'Bebert', '$2y$10$R8zyJ04Znv74aU84ZHN4eOTLtVPHMhZVRWmQqZTkuZObvTq/.GYua');
+(1, 'Guillaume', '$2y$10$Law4Z32dQ7T9DFrRfkQVHeF9wtTlOkFimcHuqlgdgkqOaaWWSqeX.'),
+(2, 'William', '$2y$10$eRDsAtXVMNHx/qpbFK0DXuMx0t/geec8rSRzDnk2D/uRzL02EbOnK');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
