@@ -56,13 +56,14 @@
 
                     $login=$_POST['login'];
                     $password=$_POST['password'];
+                    $hash = password_hash($password, PASSWORD_DEFAULT);
                     $confirm_password=$_POST['confirm-password'];
                     $error_log = '<section class=" alert-css text-center alert alert-danger alert-dismissible fade show">
-                    <strong>Mauvais mot de passe !</strong> Les mots de passe ne sont pas identiques.</section>';
-                    
+                    <strong>Mauvais mot de passe !</strong> Les mots de passe ne sont pas identiques.</section>';      
+
                     if($password === $confirm_password){
 
-                        $requete = "INSERT INTO utilisateurs (login, password) VALUES ('$login','$password')";
+                        $requete = "INSERT INTO utilisateurs (login, password) VALUES ('$login','$hash')";
                         $verification = mysqli_query($db, "SELECT login FROM utilisateurs WHERE login = '".$_POST['login']."'");
 
                         if(mysqli_num_rows($verification)) {
@@ -77,7 +78,8 @@
                     else{
                         echo($error_log);
                     }
-                }   
+                }  
+                 
             ?>
 
         </section>
