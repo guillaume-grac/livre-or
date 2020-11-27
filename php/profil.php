@@ -24,7 +24,7 @@
         <h1><span class="title">Brasserie <u>La Plateforme</u></span></h1>
         <nav>
             <ul class="nav justify-content-center nav-head"> 
-                <li class="nav-item"><a class="nav-link" href="inscription.php"><?php// if (!isset($_SESSION['login'])){ echo '<i class="fas fa-signature"></i> | Inscription';}?></a></li>
+                <li class="nav-item"><a class="nav-link" href="inscription.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-signature"></i> | Inscription';}?></a></li>
                 <li class="nav-item"><a class="nav-link" href="connexion.php"><?php if (!isset($_SESSION['login'])){ echo '<i class="fas fa-concierge-bell"></i> | Connexion';}?></a></li>
                 <li class="nav-item"><a class="nav-link" href="../index.php"><i class="fas fa-utensils"></i> | Accueil</a></li>
                 <li class="nav-item"><a class="nav-link" href="commentaire.php"><i class="fas fa-feather-alt"></i> | Commentaire</a></li>
@@ -41,12 +41,16 @@
                 if(isset($_POST['update'])){
                     if(isset($_POST['Nlogin']) && $_POST['Npassword'] === $_POST['NCpassword']){
 
+                        
                         $login=$_POST['Nlogin'];
                         $password=$_POST['Npassword'];
                         $confirmpassword=$_POST['NCpassword'];
-                        $id=$_SESSION['id'];                  
+                        $id=$_SESSION['id'];
+                        
+                        $hash = password_hash($password, PASSWORD_DEFAULT);
 
-                        $update = mysqli_query($db, "UPDATE utilisateurs SET login = '$login', password = '$password' WHERE id = $id");
+
+                        $update = mysqli_query($db, "UPDATE utilisateurs SET login = '$login', password = '$hash' WHERE id = $id");
 
                         $_SESSION['login']=$login;
                         $_SESSION['password']=$password;
@@ -77,11 +81,11 @@
                         </section>
                         <section class="form-group">
                             <label for="Npassword">Mot de Passe</label>
-                            <input type="password" class="form-control" name="Npassword" placeholder="Votre nouveau Mot de Passe" value="'.$_SESSION['password'].'" required>
+                            <input type="password" class="form-control" name="Npassword" placeholder="Votre nouveau Mot de Passe (ou ancien si vous souhaitez le conserver)" required>
                         </section>
                         <section class="form-group">
                             <label for="NCpassword">Confirmez votre Mot de Passe</label>
-                            <input type="password" class="form-control" name="NCpassword" placeholder="Confirmez votre nouveau Mot de Passe" value="'.$_SESSION['password'].'" required>
+                            <input type="password" class="form-control" name="NCpassword" placeholder="Confirmez votre nouveau Mot de Passe (ou ancien)" required>
                         </section>
                         <button type="submit" name="update" class="btn btn-dark">Enregistrer</button><br>
                     </form>

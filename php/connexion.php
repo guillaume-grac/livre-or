@@ -33,25 +33,39 @@
                 $identifiant = ($_POST['login']);
                 $password = ($_POST['password']);
                 
-                $error_log = '<section class="alert alert-danger text-center" role="alert"><b>Veuillez réessayer !</b> Login ou mot de passe incorrect.</section>';
+                $error_log = '<section class="alert alert-danger text-center" role="alert"><b>Veuillez réessayer !</b> Mot de passe incorrect.</section>';
         
-                $verification = mysqli_query($db, "SELECT * FROM utilisateurs WHERE login = '".$_POST['login']."'AND password = '".$_POST['password']."'");
+                $verification = mysqli_query($db, "SELECT * FROM utilisateurs WHERE login = '".$_POST['login']."'");
 
                 $var = mysqli_fetch_assoc($verification);
                        
-                if(mysqli_num_rows($verification)){
-        
-                    $_SESSION['login'] = $var['login'];
-                    $_SESSION['password'] = $var['password'];
-                    $_SESSION['id'] = $var['id'];
-                    $_SESSION['login'] = $identifiant;
-                    $_SESSION['password'] = $password;
-                    header('Location: ../index.php');
+                if(mysqli_num_rows($verification) == 1){
+
+                    $verification2 = mysqli_query($db, "SELECT password FROM `utilisateurs` WHERE login=\"$identifiant\"");
+
+                    $row = mysqli_fetch_array($verification2);
+
+                    $hash = $row['password'];
+                    
+                    if(password_verify($password, $hash)){
+                        $_SESSION['login'] = $var['login'];
+                        $_SESSION['password'] = $var['password'];
+                        $_SESSION['id'] = $var['id'];
+
+                        $_SESSION['login'] = $identifiant;
+                        $_SESSION['password'] = $password;
+                        header('Location: ../index.php');
+                    }
+                    else{       
+                        echo $error_log;
+                    }
                 }
-                else{       
-                 echo $error_log;
+                else{
+                    $error_log2 = '<section class="alert alert-danger text-center" role="alert"><b>Veuillez réessayer !</b> Login ou mot de passe incorrect ou innexistant.</section>';
+                    echo $error_log2;
                 }
             }
+            
         ?>
         <section class="container-fluid">
             <form class="formulaire" method="post" action="connexion.php"> 

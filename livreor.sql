@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 26 nov. 2020 à 09:03
+-- Généré le : ven. 27 nov. 2020 à 13:14
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -34,7 +34,19 @@ CREATE TABLE IF NOT EXISTS `commentaires` (
   `id_utilisateur` int(11) NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `commentaires`
+--
+
+INSERT INTO `commentaires` (`id`, `commentaire`, `id_utilisateur`, `date`) VALUES
+(1, 'Meilleure choix de biÃ¨res de la rÃ©gion !', 1, '2020-11-27 12:11:14'),
+(2, 'Trop cool', 2, '2020-11-27 12:17:50'),
+(3, 'Uh oh !', 3, '2020-11-27 12:19:00'),
+(4, 'https://www.youtube.com/watch?v=SNUuB_rmIQI', 3, '2020-11-27 12:20:36'),
+(5, 'Je suis bleu', 3, '2020-11-27 12:23:31'),
+(6, 'Tg Bebert ...', 1, '2020-11-27 12:23:52');
 
 -- --------------------------------------------------------
 
@@ -48,14 +60,16 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `utilisateurs`
 --
 
 INSERT INTO `utilisateurs` (`id`, `login`, `password`) VALUES
-(1, 'aaaz', 'aaaz');
+(1, 'Guillaume', '$2y$10$LAIk0unBo13GJwDdN4ZjjOpn.fBL5CdJ/VUsny7qBzW7AYXj6OR86'),
+(2, 'Jacquie', '$2y$10$lYB3XZaoUFdx/tRLJzSIbexHm8JkEWcFWcQ.hce8FTmM00KFra4jW'),
+(3, 'Bebert', '$2y$10$R8zyJ04Znv74aU84ZHN4eOTLtVPHMhZVRWmQqZTkuZObvTq/.GYua');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
