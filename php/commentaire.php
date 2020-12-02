@@ -16,7 +16,7 @@
     if($nbr_ligne == 0){
         mysqli_query($db,"ALTER TABLE commentaires AUTO_INCREMENT = 1");
     }
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
